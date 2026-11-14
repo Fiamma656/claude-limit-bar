@@ -53,8 +53,6 @@ export const register: Register = on => {
     const { Box, Text } = $.ui.resolve(e)
     const five = s.limits.find(l => l.kind === 'five_hour')
     const week = s.limits.find(l => l.kind === 'seven_day')
-    const next_ = [five, week].filter(Boolean).sort((a, b) =>
-      Date.parse(a!.resetsAt ?? '9e15') - Date.parse(b!.resetsAt ?? '9e15'))[0]
 
     const parts: any[] = []
     const lim = (label: string, l: typeof five) =>
@@ -62,11 +60,11 @@ export const register: Register = on => {
         <Text key={label}>
           {label}{' '}
           <Text color={color(l.percentUsed)}>{bar(l.percentUsed)}</Text> <Text bold>{Math.round(l.percentUsed)}%</Text>
+          <Text dimColor> · Reset in </Text><Text bold>{clock(l.resetsAt, now)}</Text>
           {'   '}
         </Text>
       )
     parts.push(lim('5h', five), lim('Woche', week))
-    if (next_) parts.push(<Text key="reset">Reset in <Text bold>{clock(next_.resetsAt, now)}</Text>{'   '}</Text>)
     if (s.usd !== undefined) parts.push(<Text key="cost">Kosten ${s.usd.toFixed(2)}{'   '}</Text>)
     if (s.tokens !== undefined && s.window)
       parts.push(<Text key="ctx">Kontext {k(s.tokens)} <Text dimColor>/ {k(s.window)}</Text></Text>)

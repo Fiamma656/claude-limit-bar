@@ -3,11 +3,11 @@
 Ein Claude-Mod, der dauerhaft eine Statuszeile über dem Prompt anzeigt:
 
 ```
-5h ████░░░░░░ 42%   Woche ██░░░░░░░░ 18%   Reset in 2:10 h   Kosten $3.40   Kontext 76k / 200k
+5h ████░░░░░░ 42% · Reset in 2:10 h   Woche ██░░░░░░░░ 18% · Reset in 3d 5h   Kosten $3.40   Kontext 76k / 200k
 ```
 
-- **5h / Woche:** verbrauchter Anteil des jeweiligen Limit-Fensters (gelb ab 70 %, rot ab 90 %)
-- **Reset in:** Zeit bis zum nächsten Reset (5h-Fenster oder Woche, je nachdem, was zuerst kommt)
+- **5h / Woche:** verbrauchter Anteil des jeweiligen Limit-Fensters (grün, ab 70 % orange, ab 90 % rot)
+- **Reset in:** Zeit bis zum Reset, getrennt für das 5h-Fenster und die Woche
 - **Kosten:** Sitzungskosten in Dollar
 - **Kontext:** belegte Tokens / Kontextfenster des Modells
 
