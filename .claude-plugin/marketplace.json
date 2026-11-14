@@ -1,0 +1,7 @@
+{
+  "name": "fiamma656-mods",
+  "owner": { "name": "fiamma656" },
+  "plugins": [
+    { "name": "limit-bar", "source": "./", "description": "Quick-View-Statuszeile über dem Prompt: Limits, Reset, Kosten, Kontext" }
+  ]
+}
