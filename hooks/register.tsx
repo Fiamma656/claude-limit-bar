@@ -20,8 +20,8 @@ const clock = (iso: string | undefined, now: number) => {
 }
 
 const k = (n: number) => `${Math.round(n / 1000)}k`
-// dunkle Töne: auf hellem wie dunklem Hintergrund lesbar (kein reines Gelb)
-const color = (pct: number) => (pct >= 90 ? '#c62828' : pct >= 70 ? '#c25e00' : '#2e7d32')
+// keine Farben: normale Schriftfarbe ist auf hellem und dunklem Hintergrund lesbar
+const warn = (pct: number) => (pct >= 90 ? ' ⚠' : '')
 
 export const register: Register = on => {
   on('session.start', async ($, e, next) => {
@@ -59,7 +59,7 @@ export const register: Register = on => {
       l && (
         <Text key={label}>
           {label}{' '}
-          <Text color={color(l.percentUsed)}>{bar(l.percentUsed)}</Text> <Text bold>{Math.round(l.percentUsed)}%</Text>
+          <Text>{bar(l.percentUsed)}</Text> <Text bold>{Math.round(l.percentUsed)}%{warn(l.percentUsed)}</Text>
           <Text dimColor> · Reset in </Text><Text bold>{clock(l.resetsAt, now)}</Text>
           {'   '}
         </Text>

@@ -1,6 +1,6 @@
 {
   "name": "limit-bar",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Statuszeile über dem Prompt: 5h-/Wochenlimit, Reset, Sitzungskosten und Kontext",
   "author": { "name": "fiamma656" },
   "license": "MIT",
